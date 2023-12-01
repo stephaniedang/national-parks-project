@@ -1,7 +1,6 @@
 <script>
   import Visualization from '../components/Visualization.svelte';
   import Legend from '../components/Legend.svelte';
-  import LandingOverlay from '../components/LandingOverlay.svelte';
   import "@fontsource/lato/100.css";
 
   let width;
