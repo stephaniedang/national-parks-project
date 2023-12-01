@@ -1,13 +1,12 @@
 import adapter from '@sveltejs/adapter-static';
-
-const dev = process.argv.includes('dev');
+import { vitePreprocess } from '@sveltejs/kit/vite';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
     kit: {
-        adapter: adapter(),
-        paths: {
-            base: dev ? '' : process.env.BASE_PATH,
-        }
-    }
+        appDir: 'app', // Required as the default is _app
+        adapter: adapter()
+    },
+    preprocess: vitePreprocess()
 };
+export default config;
