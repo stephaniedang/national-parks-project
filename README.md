@@ -1,4 +1,4 @@
-# Adventure Awaits
+# Adventure Awaits!
 This repository is part of a personal project I've had floating in my head for the last few months. I wanted to create an interactive map to help my own trip planning when it came to finding national parks near my new home. I worked on this through November 2023 to learn and better familiar myself with creating data visualizations in Svelte!
 
 ## Data
