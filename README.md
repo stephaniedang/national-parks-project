@@ -1,38 +1,5 @@
-# create-svelte
+# Adventure Awaits!
+This repository is part of a personal project I've had floating in my head for the last few months. I wanted to create an interactive map to help my own trip planning when it came to finding national parks near my new home. I worked on this through November 2023 to learn and better familiar myself with creating data visualizations in Svelte!
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Data
+The data used in this visualization was sourced from the National Park Service's data portal and Wikipedia's list of national parks page. Due to drawn map restrictions, the following national parks are not displayed: National Park of American Samoa, Virgin Islands National Park.
