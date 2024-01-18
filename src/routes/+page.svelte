@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Adventure Awaits!</title>
+</svelte:head>
+
 <script>
   import Visualization from '../components/Visualization.svelte';
   import Legend from '../components/Legend.svelte';
