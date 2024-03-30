@@ -205,8 +205,8 @@
         y: event.clientY + (svgRect.top / 11)
       };
 
-      console.log("Tooltip position:", radialTooltipPosition); // Verify the tooltip position
-      console.log("Tooltip visibility:", radialTooltipVisible); // Verify if the tooltip is set to visible
+      console.log("Tooltip position:", radialTooltipPosition); 
+      console.log("Tooltip visibility:", radialTooltipVisible); 
       console.log(svgRect, event.clientX, event.clientY)
     };
 

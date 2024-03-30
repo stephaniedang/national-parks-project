@@ -34,7 +34,6 @@ let localMapScaleFactor = 1;
 
 $: localMapScaleFactor = externalMapScaleFactor;
 
-// details section variables
 let selectedPark = null;
 
 onMount(async () => {
@@ -44,7 +43,6 @@ onMount(async () => {
   states = topojson.feature(us, us.objects.states).features;
   mesh = topojson.mesh(us, us.objects.states, (a, b) => a !== b);
   
-  // Load and process the parks data from CSV
   const parksData = await csv('data/clean-nps-locations.csv', d => ({
     name: d.Park,
     lat: +d.Latitude,
@@ -59,14 +57,12 @@ onMount(async () => {
     position: projection([park.lng, park.lat])
   }));
 
-  // Load and process YoY visitors data from CSV
   const visitorData = await csv('data/clean-yoy-visitors.csv', d => ({
     parkName: d['ParkName'],
     year: +d.Year,
     visitorCount: +d['RecreationVisits']
   }));
 
-    // Load and process YoY visitors data from CSV
     const visitorMonthlyData = await csv('data/clean-mom-visitors.csv', d => ({
     parkName: d['ParkName'],
     year: +d.Year,
@@ -74,10 +70,8 @@ onMount(async () => {
     visitorCount: +d['RecreationVisits']
   }));
 
-  // Determine most recent year
   mostRecentYear = max(visitorData, d => d.year);
 
-  // Filter data for most recent year and sum up visitors for each park
   visitorData
     .filter(d => d.year === mostRecentYear)
     .forEach(d => {
@@ -86,7 +80,6 @@ onMount(async () => {
 
   maxVisitorCount = max(visitorData, d => d.visitorCount);
 
-  // Combine park data with visitor counts
   parksWithVisitors = parksData.map(park => {
     return {
       ...park,
@@ -95,17 +88,16 @@ onMount(async () => {
     }
   });
 
-  // Create color scale
+  // color scale
   colorScale = scaleSequential(interpolateRgbBasis(['#ef798a', '#232860', '#6787e7']))
                         .domain([0,max(visitorData, d => d.visitorCount)]);
 
-  // Set the flag after the states have finished drawing
+  // set the flag after the states have finished drawing
   const totalStatesDuration = states.length * 50 + 1000;
   setTimeout(() => {
     areStatesDrawn = true;
 
     parksWithVisitors.forEach((park, index) => {
-        // Gradually add parks to the displayedParks array
         setTimeout(() => {
           displayedParks = [...displayedParks, park];
         }, index * 50);
@@ -146,7 +138,6 @@ onMount(async () => {
 </script>
 
 <div class="wrapper">
-  <!-- State shapes -->
   <div class="map-container" style="flex: {selectedPark ? '2' : '1'}">
     <svg viewBox="0 0 975 610" preserveAspectRatio="xMidYMid meet"> 
     {#each states as feature, i}
@@ -157,7 +148,6 @@ onMount(async () => {
         />
       {/each}
 
-    <!-- Circles for displayed parks -->
     <g class="nat-parks">
       {#each displayedParks as park}
         {#if park.position}
@@ -210,7 +200,6 @@ onMount(async () => {
 <style>
 * {
   box-sizing: border-box;
-  /* outline: 1px solid blue; */
 }
 
 .wrapper {
